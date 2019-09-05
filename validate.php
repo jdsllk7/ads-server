@@ -20,10 +20,16 @@
 			
 			$sql = "INSERT INTO active_centers (center_name, province, town_or_city, neighborhood, latitude, longitude) VALUES ('$name', '$province', '$town_or_city', '$neighborhood', '$latitude', '$longitude')";
 
-			if (mysqli_query($conn, $sql)) {
-				echo "<div id='center_added' class='center_added'>New center added successfully";
-					echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
-				echo"</div>";
+			$check = mysqli_query($conn,"SELECT * from active_centers WHERE latitude='$latitude' and longitude='$longitude'");
+			$check_rows = mysqli_num_rows($check);
+			
+			if ($check_rows == 0) {
+
+				if (mysqli_query($conn, $sql)) {
+					echo "<div id='center_added' class='center_added'>New center added successfully";
+						echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
+					echo"</div>";
+				}
 			}
 	
 		}//end if()	

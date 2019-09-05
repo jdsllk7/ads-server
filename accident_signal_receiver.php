@@ -8,7 +8,7 @@
 	<body style="text-align:center;">
 	<a href="index.php" style="position: absolute;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Control Panel</span> </a>
 	<br><br>
-	<p class="map_header">Accident Detection System<br><br><b>Log</b></p><br><br><br><br>
+	<p class="map_header">Accident Detection System<br><br><b>Logs</b></p><br><br><br><br>
 	
 		<section id="main" style="text-align:left; font-size:1.2em; padding: 2%; border: 3px solid #4d4d4d;">
 			
@@ -38,7 +38,7 @@
 								echo "<td>".$count."</td>";
 								echo "<td>".$row["center_name"]."</td>";
 								echo "<td>".$row["accident_sites_id"]."</td>";
-								echo "<td>".timeLog($row["date"])."</td>";
+								echo "<td>".timeLog($row["datez"])."</td>";
 						echo "</tr>";
 
 						$count++;
@@ -87,6 +87,8 @@
 			
 			$count = 1;
 			
+			echo "<br><br><h4>Current Response</h4>";
+
 			// Output Active First Responders
 			while($row = mysqli_fetch_assoc($result)) {
 				
@@ -241,7 +243,7 @@
 	function timeLog($timestamp){
 		$time_ago = strtotime($timestamp);
 		$current_time = time();
-		$time_difference = $current_time - $time_ago;
+		$time_difference = $current_time - $time_ago - 7200;
 		$seconds = $time_difference;
 		$minutes = round($seconds / 60);
 		$hours = round($seconds / 3600);

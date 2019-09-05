@@ -16,14 +16,14 @@
 		
 		<button class="openbtn" onclick="openNav()">☰ Menu</button>
 		<a href="index.php" class="openbtn refresh">Refresh<br>data</a><br><br><br><br>
-		<a href="accident_signal_receiver.php" class="openbtn refresh">Log</a> 
+		<a href="accident_signal_receiver.php" class="openbtn refresh">Logs</a> 
 		
 		
 		<section id="main">
 			<p class="map_header">Accident Detection System<br><b>Control Panel</b></p>
 			<div id="googleMap" class="map">
 				<i>Loading map... <span id="loaderMe" class="loader"><span class="loader-inner"></span></span>
-					<br><br>Check Internet Connection
+					<br><br>Add atleast one(1) health center in order to view map.<br><br>Or You may just have bad Internet connection... &#9785;
 				</i>
 			</div>
 		</section>
@@ -139,7 +139,6 @@
 
 <script>
 		
-		
 
 var contentstring = [];
 var regionlocation = [];
@@ -170,8 +169,8 @@ function initialize() {
 }
 
 function GetValues() {
-	contentstring = <?php echo json_encode($center); ?>;
-	regionlocation = <?php echo json_encode($latlong); ?>;
+	contentstring = <?php if(!empty($center)){ echo json_encode($center); } ?>;
+	regionlocation = <?php if(!empty($latlong)){ echo json_encode($latlong); } ?>;
 }
 
 function drop() {

@@ -1,8 +1,8 @@
 <?php
 	$error_msg = 'Sorry could not connect to server...';
-	$servername = 'localhost';
-	$username = 'root';
-	$password = '';
+	$servername = 'us-cdbr-iron-east-02.cleardb.net';
+	$username = 'bc613b5de2835f';
+	$password = '6b9997d2';
 
 	// CREATE CONNECTION
 	$conn = mysqli_connect($servername, $username, $password);
@@ -13,10 +13,10 @@
 	}
 
 	// CREATE THE DATABASE
-	// $sql = "drop database if exists central_server";
-	$sql = "CREATE DATABASE IF NOT EXISTS central_server";
+	// $sql = "drop database if exists heroku_e2108938242a1e0";
+	$sql = "CREATE DATABASE IF NOT EXISTS heroku_e2108938242a1e0";
 	if (mysqli_query($conn, $sql)) {
-		$dbname = "central_server";
+		$dbname = "heroku_e2108938242a1e0";
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
 	} else {
 		die($error_msg);
