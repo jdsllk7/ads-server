@@ -8,7 +8,7 @@
 	<body style="text-align:center;">
 	<a href="index.php" style="position: absolute;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Control Panel</span> </a>
 	<br><br>
-	<p class="map_header">Accident Detection System<br><br><b>Logaas</b></p><br><br><br><br>
+	<p class="map_header">Accident Detection System<br><br><b>Logs</b></p><br><br><br><br>
 	
 		<section id="main" style="text-align:left; font-size:1.2em; padding: 2%; border: 3px solid #4d4d4d;">
 			
