@@ -243,7 +243,7 @@
 	function timeLog($timestamp){
 		$time_ago = strtotime($timestamp);
 		$current_time = time();
-		$time_difference = $current_time - $time_ago - 7200;
+		$time_difference = $current_time - $time_ago;
 		$seconds = $time_difference;
 		$minutes = round($seconds / 60);
 		$hours = round($seconds / 3600);
