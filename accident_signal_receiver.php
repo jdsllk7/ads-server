@@ -155,8 +155,12 @@
 				sendNotificationByUserId($app_id, $player_id, $heading, $message);
 			}
 		}
-		echo "<br><strong>Shortest Distance </strong>[" . $shortest_distance_name ." Center] = ". round($shortest_distance) . " km";	
-		
+
+		if(round($shortest_distance) <= 0){
+			echo "<br><strong>Shortest Distance </strong>[" . $shortest_distance_name ." Center] =  <b>Within a Kilometer of your location</b>";	
+		}else {
+			echo "<br><strong>Shortest Distance </strong>[" . $shortest_distance_name ." Center] = ". round($shortest_distance) . " km";
+		}
 		
 		
 
