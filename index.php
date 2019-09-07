@@ -8,7 +8,7 @@
 	?>
 
 	<head>
-		<title>Control Log</title>
+		<title>Login</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
