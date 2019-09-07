@@ -51,7 +51,7 @@
 <?php
 
 	if(isset($_GET['error'])){
-		echo "<div id='center_added' style='background:red;color:white;position:absolute;top:0px;width:96%;' class='center_added'>Login unsuccessfully";
+		echo "<div id='center_added' style='background:red;color:white;position:absolute;top:0px;width:96%;' class='center_added'>Login Unsuccessfully";
 			echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
 		echo"</div>";
 	}
