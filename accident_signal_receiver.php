@@ -15,7 +15,7 @@
 			
 		
 		
-		<p><h2>Accident Sites Responded To</h2></p>
+		<p><h2>Accident Sites Responses</h2></p>
 		
 		<table class="logTable">
 			<tr style="background: #404040;">

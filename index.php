@@ -7,7 +7,9 @@
 	<head>
 		<title>Accident Detection System</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc5FCmwHQSZikD6Lb-sWeZ4_t4cm3rA0c&callback=initMap"
+    async defer></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="javaScript.js"></script>
 	</head>
@@ -21,7 +23,7 @@
 		
 		<section id="main">
 			<p class="map_header">Accident Detection System<br><b>Control Panel</b></p>
-			<div id="googleMap" class="map">
+			<div id="map" class="map">
 				<i>Loading map... <span id="loaderMe" class="loader"><span class="loader-inner"></span></span>
 					<br><br>Add atleast one(1) health center in order to view map.<br><br>Or You may just have bad Internet connection... &#9785;
 				</i>
@@ -117,7 +119,7 @@
 							  
 							
 						}//end while()
-						echo'</table>';	
+						echo'</table>';
 						
 					} else {
 						echo "<div style='color: #f2f2f2;'>No centers in database!</div>";
@@ -160,7 +162,7 @@ function initialize() {
 	iterator = 0;
 	areaiterator = 0;
 	region = new google.maps.LatLng(regionlocation[areaiterator].split(',')[0], regionlocation[areaiterator].split(',')[1]);
-	map = new google.maps.Map(document.getElementById("googleMap"), {
+	map = new google.maps.Map(document.getElementById("map"), {
 		zoom: 6,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		center: region,
@@ -214,6 +216,7 @@ function info(i) {
 }
 
 	</script>
+	
 
 
 
