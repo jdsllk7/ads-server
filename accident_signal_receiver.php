@@ -6,7 +6,7 @@
 	</head>
 
 	<body style="text-align:center;">
-	<a href="index.php" style="position: absolute;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Control Panel</span> </a>
+	<a href="controlPanel.php" style="position: absolute;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Control Panel</span> </a>
 	<br><br>
 	<p class="map_header">Accident Detection System<br><br><b>Logs</b></p><br><br><br><br>
 	
