@@ -27,7 +27,7 @@
 		
 		
 		<section id="main">
-			<p class="map_header">Accident Detection System<br><b>Control Panel</b></p>
+			<p class="map_header"><b>Welcome To SADAR</b><br>Smart Automatic Accident Detection & Ambulance Rescue<br><b>Control Panel</b></p>
 			<div id="map" class="map">
 				<i>Loading map... <span id="loaderMe" class="loader"><span class="loader-inner"></span></span>
 					<br><br>Add atleast one(1) health center in order to view map.<br><br>Or You may just have bad Internet connection... &#9785;

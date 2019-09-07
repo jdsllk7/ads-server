@@ -16,7 +16,7 @@
 	<br><br>
 	<br><br>
 	<br><br>
-	<p class="map_header"><b>Accident Detection System<br><br>Login Page</b></p><br><br><br><br>
+	<p class="map_header"><b>SADAR<br><br>Login Page</b></p><br><br><br><br>
 	
 		<section id="main2" style="text-align:left; font-size:1.2em; margin-top:50px; padding: 2%; border: 3px solid #4d4d4d;">
 		
