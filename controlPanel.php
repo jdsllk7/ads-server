@@ -12,9 +12,9 @@
 	<head>
 		<title>SADAR</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="http://maps.googleapis.com/maps/api/js"></script>
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc5FCmwHQSZikD6Lb-sWeZ4_t4cm3rA0c&callback=initMap"
-    async defer></script> -->
+		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc5FCmwHQSZikD6Lb-sWeZ4_t4cm3rA0c&callback=initMap"
+    async defer></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="javaScript.js"></script>
 	</head>
