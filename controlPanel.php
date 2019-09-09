@@ -144,85 +144,102 @@
 
 
 
-<script>
+<!-- <script>
 		
 
-var contentstring = [];
-var regionlocation = [];
-var markers = [];
-var iterator = 0;
-var areaiterator = 0;
-var map;
-var infowindow = [];
-geocoder = new google.maps.Geocoder();
+		var contentstring = [];
+		var regionlocation = [];
+		var markers = [];
+		var iterator = 0;
+		var areaiterator = 0;
+		var map;
+		var infowindow = [];
+		geocoder = new google.maps.Geocoder();
 
-$(document).ready(function () {
-	setTimeout(function () { initialize(); }, 400);
-});
+		$(document).ready(function () {
+			setTimeout(function () { initialize(); }, 400);
+		});
 
-function initialize() {
-	infowindow = [];
-	markers = [];
-	GetValues();
-	iterator = 0;
-	areaiterator = 0;
-	region = new google.maps.LatLng(regionlocation[areaiterator].split(',')[0], regionlocation[areaiterator].split(',')[1]);
-	map = new google.maps.Map(document.getElementById("map"), {
-		zoom: 6,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		center: region,
-	});
-	drop();
-}
-
-function GetValues() {
-	contentstring = <?php if(!empty($center)){ echo json_encode($center); } ?>;
-	regionlocation = <?php if(!empty($latlong)){ echo json_encode($latlong); } ?>;
-}
-
-function drop() {
-	for (var i = 0; i < contentstring.length; i++) {
-		setTimeout(function () {
-			addMarker();
-		}, 800);
-	}
-}
-
-function addMarker() {
-	
-	var icons = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-	var templat = regionlocation[areaiterator].split(',')[0];
-	var templong = regionlocation[areaiterator].split(',')[1];
-	var temp_latLng = new google.maps.LatLng(templat, templong);
-	markers.push(new google.maps.Marker(
-		{
-			position: temp_latLng,
-			map: map,
-			icon: icons,
-			animation: google.maps.Animation.BOUNCE,
-			draggable: false
-		}));
-	iterator++;
-	info(iterator);
-	areaiterator++;
-}
-
-function info(i) {
-	infowindow[i] = new google.maps.InfoWindow({
-		content: contentstring[i - 1]
-	});
-	infowindow[i].content = contentstring[i - 1];
-	google.maps.event.addListener(markers[i - 1], 'click', function () {
-		for (var j = 1; j < contentstring.length + 1; j++) {
-			infowindow[j].close();
+		function initialize() {
+			infowindow = [];
+			markers = [];
+			GetValues();
+			iterator = 0;
+			areaiterator = 0;
+			region = new google.maps.LatLng(regionlocation[areaiterator].split(',')[0], regionlocation[areaiterator].split(',')[1]);
+			map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 6,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				center: region,
+			});
+			drop();
 		}
-		infowindow[i].open(map, markers[i - 1]);
-	});
-}
 
-	</script>
+		function GetValues() {
+			contentstring = <?php if(!empty($center)){ echo json_encode($center); } ?>;
+			regionlocation = <?php if(!empty($latlong)){ echo json_encode($latlong); } ?>;
+		}
+
+		function drop() {
+			for (var i = 0; i < contentstring.length; i++) {
+				setTimeout(function () {
+					addMarker();
+				}, 800);
+			}
+		}
+
+		function addMarker() {
+			
+			var icons = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+			var templat = regionlocation[areaiterator].split(',')[0];
+			var templong = regionlocation[areaiterator].split(',')[1];
+			var temp_latLng = new google.maps.LatLng(templat, templong);
+			markers.push(new google.maps.Marker(
+				{
+					position: temp_latLng,
+					map: map,
+					icon: icons,
+					animation: google.maps.Animation.BOUNCE,
+					draggable: false
+				}));
+			iterator++;
+			info(iterator);
+			areaiterator++;
+		}
+
+		function info(i) {
+			infowindow[i] = new google.maps.InfoWindow({
+				content: contentstring[i - 1]
+			});
+			infowindow[i].content = contentstring[i - 1];
+			google.maps.event.addListener(markers[i - 1], 'click', function () {
+				for (var j = 1; j < contentstring.length + 1; j++) {
+					infowindow[j].close();
+				}
+				infowindow[i].open(map, markers[i - 1]);
+			});
+		}
+
+</script>-->
+
+
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+
 	
 
 
 
-</html>
+
+
+
+
+
+	</html>
