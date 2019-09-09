@@ -228,7 +228,7 @@
 	function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: -13.1339, lng: 27.86},
-		zoom: 4
+		zoom: 6
 	});
 	}
 </script> 
