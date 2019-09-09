@@ -227,7 +227,7 @@
       var panorama;
 
       function initMap() {
-        var astorPlace = {lat: 40.729884, lng: -73.990988};
+        var astorPlace = {lat: -15.729884, lng: 28.990988};
 
         // Set up the map
         var map = new google.maps.Map(document.getElementById('map'), {
