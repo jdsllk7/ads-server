@@ -13,7 +13,6 @@
 		<title>SADAR</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap" async defer></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="javaScript.js"></script>
 	</head>
@@ -192,6 +191,7 @@
 			markers = [];
 		}
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap" async defer></script>
 
 
 
