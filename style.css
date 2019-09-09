@@ -375,3 +375,28 @@ tr:hover{
 .logTable tr:hover{
 	background: #ccc;
 }
+
+
+
+
+
+
+
+
+
+#floating-panel {
+	position: absolute;
+	top: 80px;
+	right: 17%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: center;
+	font-family: 'Roboto','sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+  }
+  #floating-panel {
+	margin-left: -52px;
+  }

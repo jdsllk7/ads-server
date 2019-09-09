@@ -13,6 +13,7 @@
 		<title>SADAR</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap" async defer></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="javaScript.js"></script>
 	</head>
@@ -23,6 +24,9 @@
 		<a href="controlPanel.php" class="openbtn refresh">Refresh<br>data</a><br><br><br><br>
 		<a href="accident_signal_receiver.php" class="openbtn refresh">Logs</a> 
 		
+		<div id="floating-panel">
+			<button id="drop" onclick="drop()">View Centers</button>
+		</div>
 		
 		<section id="main">
 			<p class="map_header"><b>Welcome To SADAR</b><br>Smart Automatic Accident Detection & Ambulance Rescue<br><b>Control Panel</b></p>
@@ -106,7 +110,7 @@
 						// output data from database
 						while($row = mysqli_fetch_assoc($result)) {
 
-							$latlong[] = $row['latitude'].",".$row["longitude"]." ";
+							$latlong[] = $row['latitude'].",".$row["longitude"]."";
 							$center[] = $row["center_name"]." Health Center, ".$row["province"].", ". $row["town_or_city"].", ".$row["neighborhood"];
 						
 						echo'<tr>
@@ -142,121 +146,52 @@
 
 
 
-<!-- <script>
-		
 
-		var contentstring = [];
-		var regionlocation = [];
+
+
+
+<script>
+
+	var neighborhoods = <?php if(!empty($latlong)){ echo json_encode($latlong); } ?>;
+
+	console.log(neighborhoods);
+
 		var markers = [];
-		var iterator = 0;
-		var areaiterator = 0;
 		var map;
-		var infowindow = [];
-		geocoder = new google.maps.Geocoder();
 
-		$(document).ready(function () {
-			setTimeout(function () { initialize(); }, 400);
-		});
-
-		function initialize() {
-			infowindow = [];
-			markers = [];
-			GetValues();
-			iterator = 0;
-			areaiterator = 0;
-			region = new google.maps.LatLng(regionlocation[areaiterator].split(',')[0], regionlocation[areaiterator].split(',')[1]);
-			map = new google.maps.Map(document.getElementById("map"), {
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 6,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				center: region,
+				center: {lat: -13.520, lng: 27.510}
 			});
-			drop();
 		}
-
-		function GetValues() {
-			contentstring = <?php if(!empty($center)){ echo json_encode($center); } ?>;
-			regionlocation = <?php if(!empty($latlong)){ echo json_encode($latlong); } ?>;
-		}
-
+		// drop();
 		function drop() {
-			for (var i = 0; i < contentstring.length; i++) {
-				setTimeout(function () {
-					addMarker();
-				}, 800);
+			clearMarkers();
+			for (var i = 0; i < neighborhoods.length; i++) {
+				var myArr = neighborhoods[i].split(',');
+				addMarkerWithTimeout({lat: Number(myArr[0]), lng: Number(myArr[1])}, i * 500);
 			}
 		}
 
-		function addMarker() {
-			
-			var icons = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-			var templat = regionlocation[areaiterator].split(',')[0];
-			var templong = regionlocation[areaiterator].split(',')[1];
-			var temp_latLng = new google.maps.LatLng(templat, templong);
-			markers.push(new google.maps.Marker(
-				{
-					position: temp_latLng,
-					map: map,
-					icon: icons,
-					animation: google.maps.Animation.BOUNCE,
-					draggable: false
+		function addMarkerWithTimeout(position, timeout) {
+			window.setTimeout(function() {
+				markers.push(new google.maps.Marker({
+				position: position,
+				map: map,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+				animation: google.maps.Animation.BOUNCE
 				}));
-			iterator++;
-			info(iterator);
-			areaiterator++;
+			}, timeout);
 		}
 
-		function info(i) {
-			infowindow[i] = new google.maps.InfoWindow({
-				content: contentstring[i - 1]
-			});
-			infowindow[i].content = contentstring[i - 1];
-			google.maps.event.addListener(markers[i - 1], 'click', function () {
-				for (var j = 1; j < contentstring.length + 1; j++) {
-					infowindow[j].close();
-				}
-				infowindow[i].open(map, markers[i - 1]);
-			});
+		function clearMarkers() {
+			for (var i = 0; i < markers.length; i++) {
+				markers[i].setMap(null);
+			}
+			markers = [];
 		}
-
-</script>-->
-
-
-<script type="text/javascript">
-    var locations = [
-      ['Bondi Center', -13.090542, 27.274856, 4],
-      ['Coogee Center', -13.923036, 27.259052, 5],
-      ['Cronulla Center', -13.028249, 28.157507, 3],
-      ['Manly Center', -12.80010128657071, 25.28747820854187, 2],
-      ['Maroubra Center', -14.950198, 26.259302, 1]
-    ];
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6,
-      center: new google.maps.LatLng(-13.02, 28.25),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap" async defer></script>
-
-
+</script>
 
 
 
