@@ -224,63 +224,53 @@
 
 
 <script>
-      var panorama;
+	function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 4,
+		center: {lat: -13.1339, lng: 27.86}  // Australia.
+	});
 
-      function initMap() {
-        var astorPlace = {lat: -12.729884, lng: 26.990988};
+	var directionsService = new google.maps.DirectionsService;
+	var directionsRenderer = new google.maps.DirectionsRenderer({
+		draggable: true,
+		map: map,
+		panel: document.getElementById('right-panel')
+	});
 
-        // Set up the map
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: astorPlace,
-          zoom: 6,
-          streetViewControl: false
-        });
+	directionsRenderer.addListener('directions_changed', function() {
+		// computeTotalDistance(directionsRenderer.getDirections());
+	});
 
-        // Set up the markers on the map
-        var cafeMarker = new google.maps.Marker({
-            position: {lat: -12.730031, lng: 26.091428},
-            map: map,
-            icon: 'https://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=cafe|FFFF00',
-            title: 'Cafe'
-        });
+	displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
+		directionsRenderer);
+	}
 
-        var bankMarker = new google.maps.Marker({
-            position: {lat: -12.729681, lng: 26.991138},
-            map: map,
-            icon: 'https://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=dollar|FFFF00',
-            title: 'Bank'
-        });
+	function displayRoute(origin, destination, service, display) {
+	service.route({
+		origin: origin,
+		destination: destination,
+		waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
+		travelMode: 'DRIVING',
+		avoidTolls: true
+	}, function(response, status) {
+		if (status === 'OK') {
+		display.setDirections(response);
+		} else {
+		alert('Could not display directions due to: ' + status);
+		}
+	});
+	}
 
-        var busMarker = new google.maps.Marker({
-            position: {lat: -12.799559, lng: 26.990741},
-            map: map,
-            icon: 'https://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|FFFF00',
-            title: 'Bus Stop'
-        });
-
-        // We get the map's default panorama and set up some defaults.
-        // Note that we don't yet set it visible.
-        panorama = map.getStreetView();
-        panorama.setPosition(astorPlace);
-        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
-          heading: 265,
-          pitch: 0
-        }));
-      }
-
-      function toggleStreetView() {
-        var toggle = panorama.getVisible();
-        if (toggle == false) {
-          panorama.setVisible(true);
-        } else {
-          panorama.setVisible(false);
-        }
-      }
-    </script>
-
-	
-
-
+	// function computeTotalDistance(result) {
+	// var total = 0;
+	// var myroute = result.routes[0];
+	// for (var i = 0; i < myroute.legs.length; i++) {
+	// 	total += myroute.legs[i].distance.value;
+	// }
+	// total = total / 1000;
+	// document.getElementById('total').innerHTML = total + ' km';
+	// }
+</script>
 
 
 
