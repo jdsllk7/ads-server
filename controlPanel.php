@@ -232,7 +232,7 @@
         // Set up the map
         var map = new google.maps.Map(document.getElementById('map'), {
           center: astorPlace,
-          zoom: 18,
+          zoom: 10,
           streetViewControl: false
         });
 
