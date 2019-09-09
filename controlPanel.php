@@ -13,8 +13,6 @@
 		<title>SADAR</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap"
-    async defer></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="javaScript.js"></script>
 	</head>
@@ -30,7 +28,7 @@
 			<p class="map_header"><b>Welcome To SADAR</b><br>Smart Automatic Accident Detection & Ambulance Rescue<br><b>Control Panel</b></p>
 			<div id="map" class="map">
 				<i>Loading map... <span id="loaderMe" class="loader"><span class="loader-inner"></span></span>
-					<br><br>Add atleast one(1) health center in order to view map.<br><br>Or You may just have bad Internet connection... &#9785;
+					<br><br>Add atleast one(1) health center in order to view map.
 				</i>
 			</div>
 		</section>
@@ -223,17 +221,40 @@
 </script>-->
 
 
-<script>
-	var map;
-	function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: -13.1339, lng: 27.86},
-		zoom: 6
-	});
-	}
-</script> 
+<script type="text/javascript">
+    var locations = [
+      ['Bondi Center', -13.090542, 27.274856, 4],
+      ['Coogee Center', -13.923036, 27.259052, 5],
+      ['Cronulla Center', -13.028249, 28.157507, 3],
+      ['Manly Center', -12.80010128657071, 25.28747820854187, 2],
+      ['Maroubra Center', -14.950198, 26.259302, 1]
+    ];
 
-	
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: new google.maps.LatLng(-13.02, 28.25),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4bSJTKEB7naiqu0LSYp27SQmglUyZ-Jo&callback=initMap" async defer></script>
 
 
 
