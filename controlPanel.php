@@ -29,13 +29,14 @@
 		
 		<section id="main">
 			<p class="map_header"><b>Welcome To SADAR</b><br>Smart Automatic Accident Detection & Ambulance Rescue<br><b>Control Panel</b></p>
+			<i style="text-decoration:none;font-size:1.1em;">(Displaying Active Health Centers)</i>
 			<div id="map" class="map">
 				<i>Loading map... <span id="loaderMe" class="loader"><span class="loader-inner"></span></span>
 					<br><br>Add atleast one(1) health center in order to view map.
 				</i>
 			</div>
 		</section>
-		<i style="text-decoration:none;font-size:1em;">(Displaying Active Health Centers)</i>
+		
 		
 		
 		<!--Sidebar-->
