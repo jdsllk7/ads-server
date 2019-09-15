@@ -1,5 +1,6 @@
-
-<?php include 'connect.php';?>
+<?php
+session_start();
+include 'connect.php';?>
 <?php include 'validate.php';?>
 
 <!DOCTYPE html>
@@ -36,6 +37,28 @@
 				</i>
 			</div>
 		</section>
+
+		<!-- info -->
+		<?php
+			if(isset($_SESSION["info"]) && $_SESSION["info"] == "log"){
+				echo "<div id='center_added' style='position:absolute;top:0px;width:97%;' class='center_added'>All Logs Deleted Successfully!";
+					echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
+				echo"</div>";
+				$_SESSION["info"] = "";
+			
+			}elseif(isset($_SESSION["info"]) && $_SESSION["info"] == "accident"){
+				echo "<div id='center_added' style='position:absolute;top:0px;width:97%;' class='center_added'>All Accident Sites Deleted Successfully!";
+					echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
+				echo"</div>";
+				$_SESSION["info"] = "";
+			
+			}elseif(isset($_SESSION["info"]) && $_SESSION["info"] == "center"){
+				echo "<div id='center_added' style='position:absolute;top:0px;width:97%;' class='center_added'>All Health Centers Deleted Successfully!";
+					echo"<span class='closebtn' onclick=' document.getElementById(\"center_added\").style.display=\"none\";'>&times;</span>";
+				echo"</div>";
+				$_SESSION["info"] = "";
+			}
+		?>
 		
 		
 		
@@ -45,14 +68,27 @@
 			
 			<!--Main Menu-->
 			<div id="inner_mySidebar" class="inner_mySidebar">
-				<br><br>
 				<p class="mySidebar_header">Menu</p>
 				<button class="button" onclick="view_centers()">View Centers</button><br>
 				<button class="button" onclick="add_center()">Add New Center</button><br>
+				<form action="delete_centers.php">
+					<button class="button" type="submit">Delete All Centers</button><br>
+				</form>
+				<form action="delete_accidents.php">
+					<button class="button" type="submit">Delete All Accidents Site</button><br>
+				</form>
+				<form action="delete_logs.php">
+					<button class="button" type="submit">Delete All Logs</button><br>
+				</form>
 				<form action="logout_db.php">
 					<button class="button" type="submit">Log Out</button><br>
 				</form>
+				<br>
+				<br>
+				<br>
 			</div>
+
+			
 			
 			<!--Add Center-->
 			<div class="form-popup" id="myForm">

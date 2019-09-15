@@ -12,9 +12,11 @@
 
 	<body style="text-align:center;">
 	<a href="controlPanel.php" style="position: absolute;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Control Panel</span> </a>
+	<a href="accident_signal_receiver.php" style="position: absolute;top:80px;right:110px;margin:0%;"><span href="accident_signal_receiver.php" class="openbtn">Refresh<br>Logs</span></a>
 	<br>
-	<p class="map_header"><b>SADAR</b><br>Smart Automatic Accident Detection & Ambulance Rescue<br><br><b>Logs</b></p><br><br><br><br><br><br>
-	
+	<p class="map_header"><b>SADAR LOGS</b><br><br>Smart Automatic Accident Detection & Ambulance Rescue Logs</p><br>
+	<i style="text-decoration:none;font-size:1.1em;">(A Log is displayed each time an Accident Site is Successfully attended to...)</i><br>
+	<br><br><br><br><br><br>
 		<section id="main" style="text-align:left; font-size:1.2em; padding: 2%; border: 3px solid #4d4d4d;">
 			
 			
