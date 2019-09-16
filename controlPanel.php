@@ -69,6 +69,16 @@ include 'connect.php';?>
 			<!--Main Menu-->
 			<div id="inner_mySidebar" class="inner_mySidebar">
 				<p class="mySidebar_header">Menu</p>
+				<?php
+					$sql = "SELECT * FROM accident_sites";
+					$result = mysqli_query($conn, $sql);
+					if (mysqli_num_rows($result) > 0) {
+						echo '<button class="button" style="background:white;color:#4d4d4d;cursor:default;">Accidents: '.mysqli_num_rows($result).'</button><br>';
+					}else {
+						echo '<button class="button" style="background:white;color:#4d4d4d;cursor:default;">No Accidents Recorded!</button><br>';
+					}
+				?>
+				
 				<button class="button" onclick="view_centers()">View Centers</button><br>
 				<button class="button" onclick="add_center()">Add New Center</button><br>
 				<form action="delete_centers.php">
