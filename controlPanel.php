@@ -143,6 +143,7 @@ include 'connect.php';?>
 						
 						echo'<table>
 						  <tr class="header">
+						  	<th>DELETE</th>
 							<th>ID</th>
 							<th>Name</th>
 							<th>Province</th>
@@ -160,6 +161,7 @@ include 'connect.php';?>
 							$center[] = $row["center_name"]." Health Center, ".$row["province"].", ". $row["town_or_city"].", ".$row["neighborhood"];
 						
 						echo'<tr>
+								<td class="rows" style="cursor:pointer;text-decoration:underline;"><a style="color:white;" href="delete_myCenter.php?center_id='.$row["center_id"].'">Delete</a></td>
 								<td class="rows">'.$row["center_id"].'</td>
 								<td class="rows">'.$row["center_name"].'</td>
 								<td class="rows">'.$row["province"].'</td>
