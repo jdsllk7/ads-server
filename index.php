@@ -58,7 +58,7 @@
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
-		if($_POST['username']=='admin' && $_POST['password']=='1234'){
+		if($_POST['username']=='admin@admin.com' && $_POST['password']=='1234'){
 			setcookie('username', $_POST['username'], time() + (86400 * 30), "/");
 			setcookie('password', $_POST['password'], time() + (86400 * 30), "/");
 			header("Location: controlPanel.php");
